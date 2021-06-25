@@ -1,0 +1,11 @@
+<h2>Mes joueurs</h2>
+<ul class="list-group">
+    <app-resume-joueur 
+        *ngFor="let joueur of joueurs; let i = index"
+        [joueurNom]="joueur.name" 
+        [joueurCote]="joueur.cote"
+        [index]="i"
+        [id]="joueur.id"></app-resume-joueur>
+</ul>
+<button class="btn btn-success" 
+    (click)="updateAll()">Tout mettre à jour</button>

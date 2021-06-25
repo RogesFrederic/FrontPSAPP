@@ -1,16 +1,23 @@
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+  <div class="container-fluid">
+    <div class="collapse navbar-collapse" id="navbarText">
+      <ul class="navbar-nav mr-auto">
+        <li class="nav-item">
+          <a class="nav-link" routerLinkActive="active" routerLink="joueurs">Cotes</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" routerLinkActive="active" routerLink="equipes">Equipes</a>
+        </li>
+      </ul>
+    </div>
+  </div>
+</nav>
+
 <div class="container">
+  
   <div class="row">
     <div class="col-xs-12">
-      <h2>Mes joueurs</h2>
-      <ul class="list-group">
-        <app-resume-joueur 
-          *ngFor="let joueur of joueurs"
-          [joueurNom]="joueur.name" 
-          [joueurCote]="joueur.cote"></app-resume-joueur>
-      </ul>
-      <button class="btn btn-success" 
-        [disabled]="!isAuth"
-        (click)="updateAll()">Tout mettre à jour</button>
+      <router-outlet></router-outlet>
     </div>
   </div>
 </div>

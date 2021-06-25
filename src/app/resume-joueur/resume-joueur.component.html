@@ -1,12 +1,8 @@
 <li [ngClass]="{'list-group-item': true,
                 'list-group-item-success': joueurCote > 220,
                 'list-group-item-danger': joueurCote <= 220}">
-    <div style="width: 20px; height: 20px; background-color: red;"
-        *ngIf="joueurCote < 220; else greenBox">
-    </div>
-    <ng-template #greenBox>
-        <div style="width: 20px; height: 20px; background-color: green;" ></div>
-    </ng-template>
     <h4 [ngStyle]="{color: getColor()}">Joueur : {{ joueurNom }} -- Cote : {{ getJoueurCote() | coteFormat}} </h4>
-    <input type="text" class="form-control" [(ngModel)]="joueurNom" >
+    <a [routerLink]="[id]">Détails</a>
+    <input type="text" class="form-control" [(ngModel)]="joueurNom" (change)="setJoueurNom()">
+    <button class="btn-sm btn-success btn" (click)="onUpdate()">Update</button>
 </li>

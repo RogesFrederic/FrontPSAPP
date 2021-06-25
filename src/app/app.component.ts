@@ -1,37 +1,15 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.css']
 })
-export class AppComponent {
+export class AppComponent implements OnInit {
   isAuth = false;
-  joueurs = [
-    {
-      name: 'Mbappé',
-      cote: 215
-    },
-    {
-      name: 'Benzema',
-      cote: 250
-    },
-    {
-      name: 'Lukaku',
-      cote: 280
-    }
-  ];
 
-  constructor(){
-    setTimeout(
-      () =>{
-        this.isAuth = true;
-      } ,
-      4000
-    )
-  } 
+  constructor() { }
 
-  updateAll(){
-    console.log('On update tout');
-  } 
+  ngOnInit(): void {
+  }
 }
