@@ -13,11 +13,13 @@ import { JoueurComponent } from './joueur/joueur.component';
 import { FourOhFourComponent } from './four-oh-four/four-oh-four.component';
 import { CoteFormatPipe } from './pipe/cote-format.pipe';
 import { EnregistrerJoueurComponent } from './enregistrer-joueur/enregistrer-joueur.component';
+import { HttpClientModule } from '@angular/common/http';
 
 const appRoutes: Routes = [
   { path: 'joueurs', component: PageCoteJoueursComponent },
   { path: 'joueurs/:id', component: JoueurComponent },
   { path: 'equipes', component: PageEquipesComponent },
+  { path: 'enregistrerJoueur', component: EnregistrerJoueurComponent },
   { path: '', component: PageCoteJoueursComponent },
   { path: 'not-found', component: FourOhFourComponent },
   { path: '**', redirectTo: 'not-found' }
@@ -38,6 +40,7 @@ const appRoutes: Routes = [
   imports: [
     BrowserModule,
     FormsModule,
+    HttpClientModule,
     RouterModule.forRoot(appRoutes)
   ],
   providers: [

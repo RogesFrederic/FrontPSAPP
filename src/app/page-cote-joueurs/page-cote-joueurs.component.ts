@@ -17,6 +17,7 @@ export class PageCoteJoueursComponent implements OnInit, OnDestroy {
   } 
 
   ngOnInit() {
+    this.joueurService.getJoueursDuServeur();
     this.joueurSubscription = this.joueurService.joueursSubject.subscribe(
       (joueurs: any[]) => {
         this.joueurs = joueurs;

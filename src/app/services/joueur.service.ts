@@ -1,5 +1,8 @@
+import { HttpClient } from "@angular/common/http";
+import { Injectable } from "@angular/core";
 import { Subject } from "rxjs";
 
+@Injectable()
 export class JoueurService {
     joueursSubject = new Subject<any[]>();
 
@@ -20,6 +23,8 @@ export class JoueurService {
             cote: 280
         }
     ];
+
+    constructor(private httpClient: HttpClient) { }
 
     emitJoueurSubject() : void {
         this.joueursSubject.next(this.joueurs.slice());
@@ -45,6 +50,34 @@ export class JoueurService {
     getJoueurById(id: number) {
         const joueur = this.joueurs.find(s => s.id == id);
         return joueur ? joueur : this.joueurs[0];
+    }
+
+    enregistrerJoueurSurServeur(joueur: any) {
+        this.httpClient
+            .post('http://localhost:8000/api/players', joueur)
+            .subscribe(
+                () => {
+                    console.log("Enregistrement terminé");
+                },
+                (error) => {
+                    console.log('Erreur : ' + error);
+                }
+            );
+    }
+
+    getJoueursDuServeur() {
+        this.httpClient
+            .get<{[key: string]:any[]}>('http://localhost:8000/api/players')
+            .subscribe(
+                (response) => {
+                    this.joueurs = response["hydra:member"];
+                    console.log(this.joueurs);
+                    this.emitJoueurSubject();
+                },
+                (error) => {
+                    console.log('Erreur : ' + error);
+                }
+            );
     }
 }
 
