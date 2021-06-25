@@ -6,5 +6,32 @@ import { Component } from '@angular/core';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
-  title = 'FrontPSAPP';
+  isAuth = false;
+  joueurs = [
+    {
+      name: 'Mbappé',
+      cote: 215
+    },
+    {
+      name: 'Benzema',
+      cote: 250
+    },
+    {
+      name: 'Lukaku',
+      cote: 280
+    }
+  ];
+
+  constructor(){
+    setTimeout(
+      () =>{
+        this.isAuth = true;
+      } ,
+      4000
+    )
+  } 
+
+  updateAll(){
+    console.log('On update tout');
+  } 
 }
